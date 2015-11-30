@@ -1,0 +1,9 @@
+#``````````````````````````````````````#
+#				Variables:			   #
+#%x% - Specifies the coordinate x      #
+#%z% - Specifies the coordinate z 	   # 
+#``````````````````````````````````````#
+
+
+
+teleportmessage: "&6Teleported to random coordinates!&7 (x: %x% | z: %z%)"

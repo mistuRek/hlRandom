@@ -1,0 +1,9 @@
+#``````````````````````````````````````#
+#				Variables:			   #
+#%x% - Okresla koordynat x		       #
+#%z% - Okresla koordynat z	       	   # 
+#``````````````````````````````````````#
+
+
+
+teleportmessage: "&6Teleportowano w losowe koordynaty!&7 (x: %x% | z: %z%)"

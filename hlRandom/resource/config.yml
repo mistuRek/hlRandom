@@ -1,0 +1,12 @@
+enabled: true
+
+#now only two local languages
+#but you can add your own
+#enter the name here
+#and you create a file in the langs
+
+lang: en
+
+
+-: 2000 #The greatest distance on -#
++: 2000 #The greatest distance on +#
