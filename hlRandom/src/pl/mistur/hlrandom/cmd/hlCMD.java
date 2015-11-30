@@ -30,6 +30,9 @@ public class hlCMD implements CommandExecutor{
 						}
 					}
 				}
+				else {
+					sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Messages.getDontpermissions()));
+				}
 				if(args[0].equalsIgnoreCase("version")){
 					sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c[hlRandom] &2Version: " + hlRandom.getInstance().getDescription().getVersion()));
 					
