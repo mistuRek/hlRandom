@@ -7,3 +7,20 @@
 
 
 teleportmessage: "&6Teleported to random coordinates!&7 (x: %x% | z: %z%)"
+
+
+
+
+
+
+
+
+
+
+#```````````````````````````````````````|Error messages|```````````````````````````````````````#
+invalidarguments: "&cError: Invalid arguments"
+permissions: "&cError: You don't have permission to do that"
+notnumber: "&cError: Arguments must be a number"
+mustgreater: "&cError: Integer must be a greater than 0"
+notplayer: "&cError: Sender must be a player"
+#``````````````````````````````````````````````````````````````````````````````````````````````#

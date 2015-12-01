@@ -1,12 +1,11 @@
 package pl.mistur.hlrandom.cmd;
 
-import java.io.IOException;
+
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 
 import pl.mistur.hlrandom.hlRandom;
@@ -21,10 +20,9 @@ public class hlCMD implements CommandExecutor{
 			if (args.length > 0) {
 				if (sender.hasPermission("hlrandom.reload")) { 
 					if (args[0].equalsIgnoreCase("reload")) {
-						try {
-							Settings.loadConfig();
-						} catch (IOException | InvalidConfigurationException e) {
-						}
+						Settings.loadConfig();
+						Settings.loadLang();
+						
 						if (sender instanceof Player) {
 							sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2All data have been properly loaded!"));
 						}

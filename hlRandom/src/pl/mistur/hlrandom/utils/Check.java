@@ -14,22 +14,29 @@ import pl.mistur.hlrandom.data.Settings;
 
 public class Check {
 	
-	public static void checkConf() throws BadConfigException, IOException, InvalidConfigurationException {
+	public static void checkConf(){
 		if (Settings.isEnabled()) {
 			FileConfiguration config = hlRandom.getInstance().getConfig();
-			config.load(new File(hlRandom.getInstance().getDataFolder(), "config.yml"));
+			try {
+				config.load(new File(hlRandom.getInstance().getDataFolder(), "config.yml"));
+			} catch (IOException | InvalidConfigurationException e1) {
+			}
 			ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
 			try {
-				if (Integer.parseInt(config.getString("-")) > 0 && Integer.parseInt(config.getString("+")) > 0) {
+				if (Integer.parseInt(config.getString("-")) > 0 && Integer.parseInt(config.getString("+")) > 0 && Integer.parseInt(config.getString("groupradius")) > 0) {
 					Settings.setMinus(config.getString("-"));
 					Settings.setPlus(config.getString("+"));
+					Settings.setRadius(config.getString("groupradius"));
 					console.sendMessage(ChatColor.translateAlternateColorCodes('&', "[" + hlRandom.getInstance().getName() + "]" + " &2All data have been properly loaded!"));
 				}
 				else {
 					throw new BadConfigException();
 				}
-			} catch (IllegalArgumentException e) {
-				throw new BadConfigException();
+			} catch (IllegalArgumentException | BadConfigException e) {
+				try {
+					throw new BadConfigException();
+				} catch (BadConfigException e1) {
+				}
 			}
 		}
 	}

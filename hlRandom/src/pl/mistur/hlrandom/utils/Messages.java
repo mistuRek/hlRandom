@@ -7,6 +7,7 @@ public class Messages {
 	private static String dontpermissions;
 	private static String isnotnumber;
 	private static String greater;
+	private static String onlyplayer;
 	
 	public static String getTeleportMessage() {
 		return teleportmessage;
@@ -47,5 +48,15 @@ public class Messages {
 	public static void setGreater(String greater) {
 		Messages.greater = greater;
 	}
+
+	public static void setOnlyPlayer(String onlyplayer) {
+		Messages.onlyplayer = onlyplayer;
+		
+	}
+
+	public static String getOnlyplayer() {
+		return onlyplayer;
+	}
+
 
 }

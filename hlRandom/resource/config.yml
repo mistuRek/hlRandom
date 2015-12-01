@@ -10,3 +10,5 @@ lang: en
 
 -: 2000 #The greatest distance on -#
 +: 2000 #The greatest distance on +#
+
+groupradius: 3 #Radius 

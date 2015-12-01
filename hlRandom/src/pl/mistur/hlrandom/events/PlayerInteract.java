@@ -30,6 +30,11 @@ public class PlayerInteract implements Listener{
 				
 			}	
 		}
+		else if(event.getAction() == Action.RIGHT_CLICK_BLOCK && (event.getClickedBlock().getType() == Material.JUKEBOX)) {
+			RandomTP.getPlayersInRadius(3, event.getClickedBlock().getLocation());
+			RandomTP.randomGroupTP(Settings.getPlus(), Settings.getMinus(), event.getPlayer());
+			
+		}
 	}
 
 }

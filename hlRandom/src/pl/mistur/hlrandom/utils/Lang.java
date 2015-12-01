@@ -1,9 +1,5 @@
 package pl.mistur.hlrandom.utils;
 
-import java.io.File;
-
-import pl.mistur.hlrandom.data.Settings;
-
 public class Lang {
 	
 	private String name;
@@ -28,9 +24,6 @@ public class Lang {
 				return l;
 			}
 			else if (!(l.getName().equalsIgnoreCase(lname))) {
-				if(new File(Settings.getLangsF(), lname + ".yml").exists()){
-					new File(Settings.getLangsF(), lname + ".yml").delete();
-				}
 				l.setName(lname);
 			}
 				return l;

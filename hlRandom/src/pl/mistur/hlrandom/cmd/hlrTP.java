@@ -57,6 +57,9 @@ public class hlrTP implements CommandExecutor{
 						sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Messages.getInvalidarguments()));
 					}
 				}
+				else {
+					sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Messages.getOnlyplayer()));
+				}
 			}
 			else {
 				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Messages.getInvalidarguments()));
