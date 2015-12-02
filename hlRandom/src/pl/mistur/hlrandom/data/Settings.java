@@ -12,9 +12,10 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.IllegalPluginAccessException;
 
 import pl.mistur.hlrandom.hlRandom;
-import pl.mistur.hlrandom.utils.Check;
+import pl.mistur.hlrandom.utils.BadConfigException;
 import pl.mistur.hlrandom.utils.Lang;
 import pl.mistur.hlrandom.utils.Messages;
 
@@ -51,15 +52,7 @@ public class Settings {
 	}
 	
 	public static void loadConfig(){
-		FileConfiguration config = hlRandom.getInstance().getConfig();
-		setEnabled(config.getBoolean("enabled"));
-		ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-		if (isEnabled()) {
-			Check.checkConf();
-		}
-		else {
-			console.sendMessage(ChatColor.translateAlternateColorCodes('&', "[" + hlRandom.getInstance().getName() + "]" + " &cPlugin is disabled now!"));
-		}
+		BadConfigException.checkConf();
 	}
 	
 	public static void loadLang() {
@@ -73,12 +66,24 @@ public class Settings {
 		} catch (IOException | InvalidConfigurationException e) {
 			
 		}
-		Messages.setTeleportMessage(langconfig.getString("teleportmessage"));
-		Messages.setInvalidarguments(langconfig.getString("invalidarguments"));
-		Messages.setDontpermissions(langconfig.getString("permissions"));
-		Messages.setIsnotnumber(langconfig.getString("notnumber"));
-		Messages.setGreater(langconfig.getString("mustgreater"));
-		Messages.setOnlyPlayer(langconfig.getString("notplayer"));
+		
+		if (langconfig.getString("teleportmessage") != null && langconfig.getString("invalidarguments") != null && langconfig.getString("permissions") != null && (langconfig.getString("notnumber") != null && langconfig.getString("notplayer") != null && langconfig.getString("notplayer") != null)) {
+			Messages.setTeleportMessage(langconfig.getString("teleportmessage"));
+			Messages.setInvalidarguments(langconfig.getString("invalidarguments"));
+			Messages.setDontpermissions(langconfig.getString("permissions"));
+			Messages.setIsnotnumber(langconfig.getString("notnumber"));
+			Messages.setGreater(langconfig.getString("mustgreater"));
+			Messages.setOnlyPlayer(langconfig.getString("notplayer"));
+		}
+		else {
+			ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+			console.sendMessage(ChatColor.translateAlternateColorCodes('&', "[" + hlRandom.getInstance().getName() + "]" + " &cMessages are bad!"));
+			try {
+				Bukkit.getPluginManager().disablePlugin(hlRandom.getInstance());
+			}
+			catch (IllegalPluginAccessException e) {
+			}
+		}
 	}
 	
 	public static String getLang() {

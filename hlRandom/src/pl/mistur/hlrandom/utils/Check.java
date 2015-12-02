@@ -33,10 +33,6 @@ public class Check {
 					throw new BadConfigException();
 				}
 			} catch (IllegalArgumentException | BadConfigException e) {
-				try {
-					throw new BadConfigException();
-				} catch (BadConfigException e1) {
-				}
 			}
 		}
 	}

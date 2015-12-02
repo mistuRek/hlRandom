@@ -26,6 +26,11 @@ public class hlRandom extends JavaPlugin {
 	
 	public void onEnable() {
 		instance = this;
+		try {
+			Metrics metrics = new Metrics(this);
+			metrics.start();
+		} catch (IOException e) {
+		}
 		Bukkit.getPluginManager().registerEvents(new PlayerInteract(), this);
 		Bukkit.getPluginManager().registerEvents(new PlayerDamage(), this);
 		Bukkit.getPluginManager().registerEvents(new PlayerCraft(), this);
@@ -36,13 +41,6 @@ public class hlRandom extends JavaPlugin {
 		Settings.loadLang();
 		if (!Settings.isEnabled()) {
 			Bukkit.getPluginManager().disablePlugin(this);
-		}
-		else {
-			try {
-				Metrics metrics = new Metrics(this);
-				metrics.start();
-			} catch (IOException e) {
-			}
 		}
 		
 	}
