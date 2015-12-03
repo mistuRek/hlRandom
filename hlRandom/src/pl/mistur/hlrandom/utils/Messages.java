@@ -8,6 +8,8 @@ public class Messages {
 	private static String isnotnumber;
 	private static String greater;
 	private static String onlyplayer;
+	private static String rtpusage;
+	private static String hlusage;
 	
 	public static String getTeleportMessage() {
 		return teleportmessage;
@@ -56,6 +58,22 @@ public class Messages {
 
 	public static String getOnlyplayer() {
 		return onlyplayer;
+	}
+
+	public static String getRtpusage() {
+		return rtpusage;
+	}
+
+	public static void setRtpusage(String rtpusage) {
+		Messages.rtpusage = rtpusage;
+	}
+
+	public static String getHlusage() {
+		return hlusage;
+	}
+
+	public static void setHlusage(String hlusage) {
+		Messages.hlusage = hlusage;
 	}
 
 

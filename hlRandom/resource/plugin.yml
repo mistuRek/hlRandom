@@ -1,12 +1,14 @@
 name: hlRandom
-version: 1.5
+version: 1.6
 main: pl.mistur.hlrandom.hlRandom
 author: mistuR
 commands:
     hlrandom:
-        description: Basic hlRandom plugin command	
+        description: Basic hlRandom plugin command
+        aliases: [hlr]
     rtp:
         description: Teleport player to the random location
+        aliases: [randomtp]
 permissions:
     hlrandom.*:
         default: op

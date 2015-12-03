@@ -23,40 +23,27 @@ public class BadConfigException extends Exception{
 		try {
 			Bukkit.getPluginManager().disablePlugin(hlRandom.getInstance());
 		}
-		catch (IllegalPluginAccessException e) {
-		}
+		catch (IllegalPluginAccessException e) {}
 	}
 	
 	public static void checkConf() {
 		FileConfiguration config = hlRandom.getInstance().getConfig();
-		Settings.setEnabled(config.getBoolean("enabled"));
 		ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-		if (Settings.isEnabled()) {
-			try {
-				config.load(new File(hlRandom.getInstance().getDataFolder(), "config.yml"));
-			} catch (IOException | InvalidConfigurationException e1) {
+		try {
+			config.load(new File(hlRandom.getInstance().getDataFolder(), "config.yml"));
+			Settings.setBadBlocks();
+		} catch (IOException | InvalidConfigurationException e1) {}
+		try {
+			if (Integer.parseInt(config.getString("-")) > 0 && Integer.parseInt(config.getString("+")) > 0 && Integer.parseInt(config.getString("groupradius")) > 0) {
+				Settings.setMinus(config.getString("-"));
+				Settings.setPlus(config.getString("+"));
+				Settings.setRadius(config.getString("groupradius"));
+				console.sendMessage(ChatColor.translateAlternateColorCodes('&', "[" + hlRandom.getInstance().getName() + "]" + " &2Config have been properly loaded!"));
 			}
-			try {
-				if (Integer.parseInt(config.getString("-")) > 0 && Integer.parseInt(config.getString("+")) > 0 && Integer.parseInt(config.getString("groupradius")) > 0) {
-					Settings.setMinus(config.getString("-"));
-					Settings.setPlus(config.getString("+"));
-					Settings.setRadius(config.getString("groupradius"));
-					console.sendMessage(ChatColor.translateAlternateColorCodes('&', "[" + hlRandom.getInstance().getName() + "]" + " &2Config have been properly loaded!"));
-				}
-				else {
-					throw new BadConfigException();
-				}
-			} catch (IllegalArgumentException | BadConfigException e) {
+			else {
+				throw new BadConfigException();
 			}
-		}
-		else {
-			console.sendMessage(ChatColor.translateAlternateColorCodes('&', "[" + hlRandom.getInstance().getName() + "]" + " &cPlugin is disabled now!"));
-			try {
-				Bukkit.getServer().getPluginManager().disablePlugin(hlRandom.getInstance());
-			} catch (IllegalPluginAccessException e) {
-				
-			}
-		}
+		} catch (IllegalArgumentException | BadConfigException e) {}
 			
 	}
 

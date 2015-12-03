@@ -24,3 +24,8 @@ notnumber: "&cError: Argumenty musza byc liczba!"
 mustgreater: "&cError: Liczba musi byc wieksza od 0!"
 notplayer: "&cError: Nadawca musi byc graczem!"
 #``````````````````````````````````````````````````````````````````````````````````````````````#
+
+#```````````````````````````````````````|Usage Messages|```````````````````````````````````````#
+hlusage: "&c/hlrandom <reload/version/author>"
+rtpusage: "&c/rtp <-get> | /rtp <plus> <minus>"
+#``````````````````````````````````````````````````````````````````````````````````````````````#

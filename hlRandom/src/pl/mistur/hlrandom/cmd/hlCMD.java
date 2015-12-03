@@ -16,7 +16,7 @@ public class hlCMD implements CommandExecutor{
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if (cmd.getName().equalsIgnoreCase("hlrandom")) {
+		if (cmd.getName().equalsIgnoreCase("hlrandom") || cmd.getName().equalsIgnoreCase("hlr")) {
 			if (args.length > 0) {
 				if (sender.hasPermission("hlrandom.reload")) { 
 					if (args[0].equalsIgnoreCase("reload")) {
@@ -40,7 +40,7 @@ public class hlCMD implements CommandExecutor{
 				}
 			}
 			else {
-				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Messages.getInvalidarguments()));
+				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Messages.getHlusage()));
 			}
 		}
 		return false;

@@ -24,3 +24,8 @@ notnumber: "&cError: Arguments must be a number"
 mustgreater: "&cError: Integer must be a greater than 0"
 notplayer: "&cError: Sender must be a player"
 #``````````````````````````````````````````````````````````````````````````````````````````````#
+
+#```````````````````````````````````````|Usage Messages|```````````````````````````````````````#
+hlusage: "&c/hlrandom <reload/version/author>"
+rtpusage: "&c/rtp <-get> | /rtp <plus> <minus>"
+#``````````````````````````````````````````````````````````````````````````````````````````````#

@@ -6,22 +6,42 @@ import java.util.Random;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+
+import pl.mistur.hlrandom.data.Settings;
 
 public class RandomTP {
 	
 	private static List<Player> pl = new ArrayList<Player>();
-	public static List<Player> teleportes = new ArrayList<Player>();
 	
 	public static void randomTP(int plus, int minus, Player p) {
 		Random generator = new Random();
 		int x = generator.nextInt(plus) - generator.nextInt(minus);
 		int z = generator.nextInt(plus) - generator.nextInt(minus);
-		Location loc = new Location(p.getWorld(), x, p.getWorld().getHighestBlockYAt((int)x, (int)z), z);
+		int y = p.getWorld().getHighestBlockYAt(x, z);
+		Block highest = p.getWorld().getBlockAt(x, y - 1, z);
 		
-        p.teleport(loc);
-        loc.setY(p.getLocation().getY() + 6.0D);
+		boolean safe = false;
+		while (!safe) {
+			for (String s: Settings.getBadblocks()) {
+				if (highest.getType() == Material.getMaterial(s)) {
+					return;
+				}
+				else {
+					safe = true;
+				}
+			}
+			safe = true;
+
+		}
+		Location loc = new Location(p.getWorld(), x, y + 0.5D, z);
 		p.teleport(loc);
+		String s = new String(Messages.getTeleportMessage());
+		s = s.replaceAll("%x%", String.valueOf(p.getLocation().getX()));
+		s = s.replaceAll("%z%", String.valueOf(p.getLocation().getZ()));
+		p.sendMessage(ChatColor.translateAlternateColorCodes('&', s));
    
 	}
 	
@@ -29,16 +49,29 @@ public class RandomTP {
 		Random generator = new Random();
 		int x = generator.nextInt(plus) - generator.nextInt(minus);
 		int z = generator.nextInt(plus) - generator.nextInt(minus);
-		Location loc = new Location(p.getWorld(), x, p.getWorld().getHighestBlockYAt((int)x, (int)z), z);
+		int y = p.getWorld().getHighestBlockYAt(x, z);
+		Block highest = p.getWorld().getBlockAt(x, y - 1, z);
+		
+		boolean safe = false;
+		while (!safe) {
+			for (String s: Settings.getBadblocks()) {
+				if (highest.getType() == Material.getMaterial(s)) {
+					return;
+				}
+				else {
+					safe = true;
+				}
+			}
+			safe = true;
+
+		}
+		Location loc = new Location(p.getWorld(), x, y + 0.5D, z);
 		for (Player player : pl) {
 			player.teleport(loc);
-	        loc.setY(player.getLocation().getY() + 5.0D);
-	        player.teleport(loc);
 			String s = new String(Messages.getTeleportMessage());
 			s = s.replaceAll("%x%", String.valueOf(player.getLocation().getX()));
 			s = s.replaceAll("%z%", String.valueOf(player.getLocation().getZ()));
 			player.sendMessage(ChatColor.translateAlternateColorCodes('&', s));
-			teleportes.add(player);
 		}
 		pl.clear();
    

@@ -2,41 +2,43 @@ package pl.mistur.hlrandom.data;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.plugin.IllegalPluginAccessException;
 
 import pl.mistur.hlrandom.hlRandom;
 import pl.mistur.hlrandom.utils.BadConfigException;
+import pl.mistur.hlrandom.utils.BadLangException;
 import pl.mistur.hlrandom.utils.Lang;
-import pl.mistur.hlrandom.utils.Messages;
 
 public class Settings {
 	
 	private static File mainfolder = hlRandom.getInstance().getDataFolder();
 	private static File configfile = new File(mainfolder, "config.yml");
 	private static File lang = new File(mainfolder, "langs");
-	private static boolean enabled;
+	public static List<String> badblocks = new ArrayList<>();
 	private static int minus;
 	private static int plus;
 	private static int radius;
 	
 	public static void create() {
+		ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
 		if (!mainfolder.exists()) {
+			console.sendMessage(ChatColor.translateAlternateColorCodes('&', "[" + hlRandom.getInstance().getName() + "]" + " &cCreating data folder..."));
 			mainfolder.mkdir();
 		}
 		if (!lang.exists()) {
+			console.sendMessage(ChatColor.translateAlternateColorCodes('&', "[" + hlRandom.getInstance().getName() + "]" + " &cCreating langs folder..."));
 			lang.mkdir();
 		}
 		if (!configfile.exists()) {
+			console.sendMessage(ChatColor.translateAlternateColorCodes('&', "[" + hlRandom.getInstance().getName() + "]" + " &cCreating config..."));
 			hlRandom.getInstance().saveDefaultConfig();
 		}
 		FileConfiguration config = hlRandom.getInstance().getConfig();
@@ -56,34 +58,7 @@ public class Settings {
 	}
 	
 	public static void loadLang() {
-		FileConfiguration config = hlRandom.getInstance().getConfig();
-		Lang l = Lang.get(config.getString("lang"));
-		FileConfiguration langconfig;
-		File la = new File(getLangsF(), l.getName() + ".yml");
-		langconfig = new YamlConfiguration();
-		try {
-			langconfig.load(la);
-		} catch (IOException | InvalidConfigurationException e) {
-			
-		}
-		
-		if (langconfig.getString("teleportmessage") != null && langconfig.getString("invalidarguments") != null && langconfig.getString("permissions") != null && (langconfig.getString("notnumber") != null && langconfig.getString("notplayer") != null && langconfig.getString("notplayer") != null)) {
-			Messages.setTeleportMessage(langconfig.getString("teleportmessage"));
-			Messages.setInvalidarguments(langconfig.getString("invalidarguments"));
-			Messages.setDontpermissions(langconfig.getString("permissions"));
-			Messages.setIsnotnumber(langconfig.getString("notnumber"));
-			Messages.setGreater(langconfig.getString("mustgreater"));
-			Messages.setOnlyPlayer(langconfig.getString("notplayer"));
-		}
-		else {
-			ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-			console.sendMessage(ChatColor.translateAlternateColorCodes('&', "[" + hlRandom.getInstance().getName() + "]" + " &cMessages are bad!"));
-			try {
-				Bukkit.getPluginManager().disablePlugin(hlRandom.getInstance());
-			}
-			catch (IllegalPluginAccessException e) {
-			}
-		}
+		BadLangException.checkLang();
 	}
 	
 	public static String getLang() {
@@ -98,10 +73,6 @@ public class Settings {
 	public static int getPlus() {
 		return plus;
 	}
-	
-	public static boolean isEnabled() {
-		return enabled;
-	}
 
 	public static void setMinus(String min) {
 		minus = Integer.parseInt(min);
@@ -109,10 +80,6 @@ public class Settings {
 	
 	public static void setPlus(String max) {
 		plus = Integer.parseInt(max);
-	}
-	
-	public static void setEnabled(boolean enabled) {
-		Settings.enabled = enabled;
 	}
 	
 	public static File getLangsF() {
@@ -140,6 +107,19 @@ public class Settings {
 
 	public static void setRadius(String radius) {
 		Settings.radius = Integer.parseInt(radius);
+	}
+
+	public static List<String> getBadblocks() {
+		return new ArrayList<String>(badblocks);
+	}
+
+	public static void addBadBlock(String badblock) {
+		Settings.badblocks.add(badblock);
+	}
+	
+	public static void setBadBlocks() {
+		FileConfiguration config = hlRandom.getInstance().getConfig();
+		Settings.badblocks = config.getStringList("badblocks");
 	}
 	
 

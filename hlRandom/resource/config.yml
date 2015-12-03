@@ -1,9 +1,7 @@
-enabled: true
-
-#now only two local languages
-#but you can add your own
-#enter the name here
-#and you create a file in the langs
+#now only two local languages#
+#but you can add your own#
+#enter the name here#
+#and you create a file in the langs#
 
 lang: en
 
@@ -12,3 +10,9 @@ lang: en
 +: 2000 #The greatest distance on +#
 
 groupradius: 3 #Radius 
+
+
+
+
+badblocks:   #All names: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html#
+    - STATIONARY_WATER

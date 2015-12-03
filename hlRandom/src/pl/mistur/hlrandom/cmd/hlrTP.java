@@ -22,10 +22,6 @@ public class hlrTP implements CommandExecutor{
 							if (args[0].equalsIgnoreCase("-get")) {
 								Player p = (Player) sender;
 								RandomTP.randomTP(Settings.getPlus(), Settings.getMinus(), p);
-								String s = new String(Messages.getTeleportMessage());
-								s = s.replaceAll("%x%", String.valueOf(p.getLocation().getX()));
-								s = s.replaceAll("%z%", String.valueOf(p.getLocation().getZ()));
-								p.sendMessage(ChatColor.translateAlternateColorCodes('&', s));
 							}
 							else {
 								sender.sendMessage(ChatColor.translateAlternateColorCodes('&',Messages.getInvalidarguments()));
@@ -36,11 +32,7 @@ public class hlrTP implements CommandExecutor{
 							Player p = (Player) sender;
 							try {
 								if (Integer.valueOf(args[0]) > 0 && Integer.valueOf(args[1]) > 0) {
-									RandomTP.randomTP(Integer.valueOf(args[0]), Integer.valueOf(args[1]), p);
-									String s = new String(Messages.getTeleportMessage());
-									s = s.replaceAll("%x%", String.valueOf(p.getLocation().getX()));
-									s = s.replaceAll("%z%", String.valueOf(p.getLocation().getZ()));
-									p.sendMessage(ChatColor.translateAlternateColorCodes('&', s));	
+									RandomTP.randomTP(Integer.valueOf(args[0]), Integer.valueOf(args[1]), p);	
 								}
 								else {
 									sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Messages.getGreater()));
@@ -54,7 +46,7 @@ public class hlrTP implements CommandExecutor{
 						}
 					}
 					else {
-						sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Messages.getInvalidarguments()));
+						sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Messages.getRtpusage()));
 					}
 				}
 				else {
@@ -62,7 +54,7 @@ public class hlrTP implements CommandExecutor{
 				}
 			}
 			else {
-				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Messages.getInvalidarguments()));
+				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Messages.getDontpermissions()));
 			}
 		}
 		return false;
