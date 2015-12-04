@@ -33,6 +33,7 @@ public class BadConfigException extends Exception{
 			config.load(new File(hlRandom.getInstance().getDataFolder(), "config.yml"));
 			Settings.setBadBlocks();
 		} catch (IOException | InvalidConfigurationException e1) {}
+		Settings.setUpdatecheck(config.getBoolean("update-checker"));
 		try {
 			if (Integer.parseInt(config.getString("-")) > 0 && Integer.parseInt(config.getString("+")) > 0 && Integer.parseInt(config.getString("groupradius")) > 0) {
 				Settings.setMinus(config.getString("-"));

@@ -29,7 +29,7 @@ public class hlCMD implements CommandExecutor{
 					}
 				}
 				else {
-					sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Messages.getDontpermissions()));
+					sender.sendMessage(Messages.getMessage("permissions"));
 				}
 				if(args[0].equalsIgnoreCase("version")){
 					sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c[hlRandom] &2Version: " + hlRandom.getInstance().getDescription().getVersion()));
@@ -40,7 +40,7 @@ public class hlCMD implements CommandExecutor{
 				}
 			}
 			else {
-				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Messages.getHlusage()));
+				sender.sendMessage(Messages.getMessage("hlusage"));
 			}
 		}
 		return false;

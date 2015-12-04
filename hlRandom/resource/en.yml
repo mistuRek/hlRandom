@@ -1,8 +1,9 @@
-#``````````````````````````````````````#
-#				Variables:			   #
-#%x% - Specifies the coordinate x      #
-#%z% - Specifies the coordinate z 	   # 
-#``````````````````````````````````````#
+#```````````````````````````````````````````````````````````#
+#				Variables:			   						#
+#%x% - Specifies the coordinate x     						#
+#%z% - Specifies the coordinate z 	   						# 
+#%player% - Player in argument only in player exists		# 
+#```````````````````````````````````````````````````````````#
 
 
 
@@ -23,9 +24,11 @@ permissions: "&cError: You don't have permission to do that"
 notnumber: "&cError: Arguments must be a number"
 mustgreater: "&cError: Integer must be a greater than 0"
 notplayer: "&cError: Sender must be a player"
+playerexists: "&cPlayer %player% is not exists"
 #``````````````````````````````````````````````````````````````````````````````````````````````#
 
 #```````````````````````````````````````|Usage Messages|```````````````````````````````````````#
 hlusage: "&c/hlrandom <reload/version/author>"
-rtpusage: "&c/rtp <-get> | /rtp <plus> <minus>"
+rtpusage: "&cUsage: /rtp <-get> <player> | /rtp <plus> <minus> <player>"
+consolertpusage: "&cUsage: /rtp <-get> <player> | /rtp <plus> <minus> <player>"
 #``````````````````````````````````````````````````````````````````````````````````````````````#

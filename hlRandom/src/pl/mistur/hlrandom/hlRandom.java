@@ -10,7 +10,8 @@ import pl.mistur.hlrandom.cmd.hlrTP;
 import pl.mistur.hlrandom.data.Settings;
 import pl.mistur.hlrandom.events.PlayerCraft;
 import pl.mistur.hlrandom.events.PlayerInteract;
-import pl.mistur.hlrandom.utils.metrics.Metrics;
+import pl.mistur.hlrandom.utils.UpdateChecker;
+import pl.mistur.hlrandom.utils.metrics.MetricsLite;
 
 public class hlRandom extends JavaPlugin {
 	
@@ -22,11 +23,13 @@ public class hlRandom extends JavaPlugin {
 		}
 		return instance;
 	}
+
+	public String updatemsg;
 	
 	public void onEnable() {
 		instance = this;
 		try {
-			Metrics metrics = new Metrics(this);
+			MetricsLite metrics = new MetricsLite(this);
 			metrics.start();
 		} catch (IOException e) {
 		}
@@ -37,8 +40,14 @@ public class hlRandom extends JavaPlugin {
 		Settings.create();
 		Settings.loadConfig();
 		Settings.loadLang();
+		if (Settings.isUpdatecheck()) {
+			UpdateChecker check = new UpdateChecker();
+			check.checkUpdate();
+		}
 		
 	}
+	
+	
 
 	
 

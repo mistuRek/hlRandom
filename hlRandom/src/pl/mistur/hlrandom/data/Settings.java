@@ -14,8 +14,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 import pl.mistur.hlrandom.hlRandom;
 import pl.mistur.hlrandom.utils.BadConfigException;
-import pl.mistur.hlrandom.utils.BadLangException;
 import pl.mistur.hlrandom.utils.Lang;
+import pl.mistur.hlrandom.utils.Messages;
 
 public class Settings {
 	
@@ -26,6 +26,7 @@ public class Settings {
 	private static int minus;
 	private static int plus;
 	private static int radius;
+	private static boolean updatecheck;
 	
 	public static void create() {
 		ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
@@ -58,7 +59,7 @@ public class Settings {
 	}
 	
 	public static void loadLang() {
-		BadLangException.checkLang();
+		Messages.checkLang();;
 	}
 	
 	public static String getLang() {
@@ -120,6 +121,14 @@ public class Settings {
 	public static void setBadBlocks() {
 		FileConfiguration config = hlRandom.getInstance().getConfig();
 		Settings.badblocks = config.getStringList("badblocks");
+	}
+
+	public static boolean isUpdatecheck() {
+		return updatecheck;
+	}
+
+	public static void setUpdatecheck(boolean updatecheck) {
+		Settings.updatecheck = updatecheck;
 	}
 	
 

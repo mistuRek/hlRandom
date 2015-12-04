@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -15,9 +14,10 @@ import pl.mistur.hlrandom.data.Settings;
 public class RandomTP {
 	
 	private static List<Player> pl = new ArrayList<Player>();
+	private final static Random generator = new Random();
 	
+	@SuppressWarnings("deprecation")
 	public static void randomTP(int plus, int minus, Player p) {
-		Random generator = new Random();
 		int x = generator.nextInt(plus) - generator.nextInt(minus);
 		int z = generator.nextInt(plus) - generator.nextInt(minus);
 		int y = p.getWorld().getHighestBlockYAt(x, z);
@@ -37,14 +37,18 @@ public class RandomTP {
 
 		}
 		Location loc = new Location(p.getWorld(), x, y + 0.5D, z);
+		if (!loc.getWorld().isChunkLoaded(x, z)) {
+			loc.getWorld().refreshChunk(x, z);
+		}
 		p.teleport(loc);
-		String s = new String(Messages.getTeleportMessage());
+		String s = new String(Messages.getMessage("teleportmessage"));
 		s = s.replaceAll("%x%", String.valueOf(p.getLocation().getX()));
 		s = s.replaceAll("%z%", String.valueOf(p.getLocation().getZ()));
-		p.sendMessage(ChatColor.translateAlternateColorCodes('&', s));
+		p.sendMessage(s);
    
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static void randomGroupTP(int plus, int minus, Player p) {
 		Random generator = new Random();
 		int x = generator.nextInt(plus) - generator.nextInt(minus);
@@ -66,12 +70,15 @@ public class RandomTP {
 
 		}
 		Location loc = new Location(p.getWorld(), x, y + 0.5D, z);
+		if (!loc.getWorld().isChunkLoaded(x, z)) {
+			loc.getWorld().refreshChunk(x, z);
+		}
+		String s = new String(Messages.getMessage("teleportmessage"));
+		s = s.replaceAll("%x%", String.valueOf(x));
+		s = s.replaceAll("%z%", String.valueOf(z));
 		for (Player player : pl) {
+			player.sendMessage(s);
 			player.teleport(loc);
-			String s = new String(Messages.getTeleportMessage());
-			s = s.replaceAll("%x%", String.valueOf(player.getLocation().getX()));
-			s = s.replaceAll("%z%", String.valueOf(player.getLocation().getZ()));
-			player.sendMessage(ChatColor.translateAlternateColorCodes('&', s));
 		}
 		pl.clear();
    
