@@ -1,5 +1,5 @@
 name: hlRandom
-version: 1.9
+version: 1.9.1
 main: pl.mistur.hlrandom.hlRandom
 author: mistuR
 commands:

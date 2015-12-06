@@ -27,6 +27,7 @@ public class Settings {
 	private static int plus;
 	private static int radius;
 	private static boolean updatecheck;
+	private static boolean firstjointeleport;
 	
 	public static void create() {
 		ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
@@ -129,6 +130,14 @@ public class Settings {
 
 	public static void setUpdatecheck(boolean updatecheck) {
 		Settings.updatecheck = updatecheck;
+	}
+
+	public static boolean isFirstjointeleport() {
+		return firstjointeleport;
+	}
+
+	public static void setFirstjointeleport(boolean firstjointeleport) {
+		Settings.firstjointeleport = firstjointeleport;
 	}
 	
 

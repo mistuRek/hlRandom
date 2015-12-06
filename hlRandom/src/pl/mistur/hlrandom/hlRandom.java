@@ -10,6 +10,7 @@ import pl.mistur.hlrandom.cmd.hlrTP;
 import pl.mistur.hlrandom.data.Settings;
 import pl.mistur.hlrandom.events.PlayerCraft;
 import pl.mistur.hlrandom.events.PlayerInteract;
+import pl.mistur.hlrandom.events.PlayerJoin;
 import pl.mistur.hlrandom.utils.UpdateChecker;
 import pl.mistur.hlrandom.utils.metrics.MetricsLite;
 
@@ -35,6 +36,7 @@ public class hlRandom extends JavaPlugin {
 		}
 		Bukkit.getPluginManager().registerEvents(new PlayerInteract(), this);
 		Bukkit.getPluginManager().registerEvents(new PlayerCraft(), this);
+		Bukkit.getPluginManager().registerEvents(new PlayerJoin(), this);
 		getCommand("hlrandom").setExecutor(new hlCMD());
 		getCommand("rtp").setExecutor(new hlrTP());
 		Settings.create();

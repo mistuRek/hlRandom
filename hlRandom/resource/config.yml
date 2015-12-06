@@ -1,4 +1,5 @@
 update-checker: true
+first-join-teleport: true
 
 #now only two local languages#
 #but you can add your own#
