@@ -1,4 +1,4 @@
-package pl.mistur.hlrandom.utils;
+package pl.mistur.hlrandom.exceptions;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

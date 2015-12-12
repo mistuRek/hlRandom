@@ -1,5 +1,5 @@
 name: hlRandom
-version: 1.9.1
+version: 2.0.0
 main: pl.mistur.hlrandom.hlRandom
 author: mistuR
 commands:
@@ -15,9 +15,15 @@ permissions:
         children:
             hlrandom.reload: true
             hlrandom.rtp: true
+            hlrandom.useteleport: true
+            hlrandom.usegroupteleport: true
 
     hlrandom.reload:
         default: op
     hlrandom.rtp:
         default: op
+    hlrandom.useteleport:
+        default: true
+    hlrandom.usegroupteleport:
+        default: true
     

@@ -1,7 +1,9 @@
-package pl.mistur.hlrandom.utils;
+package pl.mistur.hlrandom.lang.utils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import pl.mistur.hlrandom.lang.Lang;
 
 public class LangUtils {
 	

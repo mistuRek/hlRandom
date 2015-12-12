@@ -15,6 +15,8 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import pl.mistur.hlrandom.hlRandom;
 import pl.mistur.hlrandom.data.Settings;
+import pl.mistur.hlrandom.exceptions.BadLangException;
+import pl.mistur.hlrandom.lang.Lang;
 
 public class Messages {
 	

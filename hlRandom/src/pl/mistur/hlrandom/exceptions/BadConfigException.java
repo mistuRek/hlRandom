@@ -1,4 +1,4 @@
-package pl.mistur.hlrandom.utils;
+package pl.mistur.hlrandom.exceptions;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,7 +32,10 @@ public class BadConfigException extends Exception{
 		try {
 			config.load(new File(hlRandom.getInstance().getDataFolder(), "config.yml"));
 			Settings.setBadBlocks();
-		} catch (IOException | InvalidConfigurationException e1) {}
+			Settings.setButtons();
+			Settings.setGroupBlocks();
+			Settings.setTeleportBlocks();
+		} catch (IOException | InvalidConfigurationException e) {}
 		Settings.setUpdatecheck(config.getBoolean("update-checker"));
 		Settings.setFirstjointeleport(config.getBoolean("first-join-teleport"));
 		try {

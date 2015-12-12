@@ -1,4 +1,6 @@
-package pl.mistur.hlrandom.utils;
+package pl.mistur.hlrandom.lang;
+
+import pl.mistur.hlrandom.lang.utils.LangUtils;
 
 public class Lang {
 	

@@ -1,21 +1,61 @@
+#````````````````````````````````#
+#````````````hlRandom````````````#
+#````````````````````````````````#
+#``````Your teleport plugin``````#
+#````````````````````````````````#
+#````````````hlRandom````````````#
+#````````````````````````````````#
+
+#```````````````````````````````````````````|Generals|```````````````````````````````````````````#
 update-checker: true
-first-join-teleport: true
-
-#now only two local languages#
-#but you can add your own#
-#enter the name here#
-#and you create a file in the langs#
-
+first-join-teleport: false
 lang: en
+#```````````````````````````````````````````|Generals|```````````````````````````````````````````#
 
 
+#```````````````````````````````````````|Teleport Options|```````````````````````````````````````#
 -: 2000 #The greatest distance on -#
 +: 2000 #The greatest distance on +#
 
 groupradius: 3 #Radius 
+#```````````````````````````````````````|Teleport Options|```````````````````````````````````````#
 
 
-
-
-badblocks:   #All names: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html#
+#````````````````````````````````````````````|Blocks|````````````````````````````````````````````#
+teleport-blocks:
+    - SPONGE
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+group-blocks:
+    - JUKEBOX
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+buttons:
+    - STONE_BUTTON 
+    - WOOD_BUTTON 
+    -
+    -
+    -
+    -
+    -
+    -
+badblocks: 
     - STATIONARY_WATER
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+#````````````````````````````````````````````|Blocks|````````````````````````````````````````````#
