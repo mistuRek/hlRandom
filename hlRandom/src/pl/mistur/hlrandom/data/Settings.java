@@ -10,9 +10,7 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.yaml.snakeyaml.scanner.ScannerException;
 
 import pl.mistur.hlrandom.hlRandom;
 import pl.mistur.hlrandom.exceptions.BadConfigException;
