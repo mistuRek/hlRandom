@@ -17,6 +17,11 @@ permissions:
             hlrandom.rtp: true
             hlrandom.useteleport: true
             hlrandom.usegroupteleport: true
+     hlrandom.player:
+        default: true
+        children:
+            hlrandom.useteleport: true
+            hlrandom.usegroupteleport: true
 
     hlrandom.reload:
         default: op
